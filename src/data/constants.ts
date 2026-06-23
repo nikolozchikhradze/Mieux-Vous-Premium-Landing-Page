@@ -2,7 +2,7 @@ import { ServiceCard, Testimonial, FAQItem } from '../types';
 
 export const EASE_LUXURY: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-export const HERO_IMAGE = "https://images.unsplash.com/photo-1615296015509-56b0201d4a86?w=2400&q=100&auto=format&fit=crop";
+export const HERO_IMAGE = "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80";
 
 export const SERVICES: ServiceCard[] = [
   {
