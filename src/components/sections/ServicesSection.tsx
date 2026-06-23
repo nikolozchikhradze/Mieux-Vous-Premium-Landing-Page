@@ -6,7 +6,7 @@ import { SERVICES } from '../../data/constants';
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-28 lg:py-40 bg-brand-bg-light">
+    <section id="services" className="py-28 lg:py-40 bg-brand-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="mb-20">
           <FadeIn>
@@ -17,24 +17,35 @@ const ServicesSection = () => {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES.map((service, idx) => (
             <FadeIn key={service.id} delay={idx * 0.1}>
-              <div className="group relative bg-white rounded-xl overflow-hidden p-10 lg:p-12 shadow-premium hover:shadow-xl transition-shadow duration-500">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-bl-full -mr-10 -mt-10 transition-transform duration-700 group-hover:scale-150" />
-                <div className="relative z-10 flex flex-col h-full">
-                  <span className="font-serif text-5xl text-brand-gold opacity-40 mb-6 block">
+              <div className="relative overflow-hidden group rounded-2xl aspect-[3/4] shadow-premium">
+                {/* Background Image */}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                
+                {/* Contrast Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full p-8 lg:p-10 justify-end">
+                  <span className="font-sans text-[0.75rem] font-bold tracking-[0.2em] text-white/50 uppercase mb-4 block">
                     0{idx + 1}
                   </span>
-                  <h3 className="font-serif font-normal text-3xl text-brand-text-main mb-4">
+                  <h3 className="font-serif font-normal text-3xl text-white mb-4">
                     {service.title}
                   </h3>
-                  <p className="font-sans font-light text-brand-text-muted text-[1.05rem] leading-relaxed mb-10 flex-1">
+                  <p className="font-sans font-light text-white/80 text-[1.05rem] leading-relaxed mb-8">
                     {service.description}
                   </p>
                   <a
                     href="#contact"
-                    className="flex items-center gap-2 font-sans font-semibold uppercase text-xs tracking-widest text-brand-text-main group-hover:text-brand-gold transition-colors w-fit"
+                    className="flex items-center gap-2 font-sans font-semibold uppercase text-xs tracking-widest text-white group-hover:text-brand-accent transition-colors w-fit"
                   >
                     Learn More <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>

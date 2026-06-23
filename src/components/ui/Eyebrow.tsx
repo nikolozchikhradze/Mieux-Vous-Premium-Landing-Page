@@ -5,7 +5,7 @@ interface EyebrowProps {
 }
 
 export const Eyebrow: React.FC<EyebrowProps> = ({ children }) => (
-  <span className="font-sans font-bold uppercase tracking-[0.2em] text-[0.7rem] text-brand-gold block mb-5">
+  <span className="font-sans font-bold uppercase tracking-[0.2em] text-[0.7rem] text-brand-accent block mb-5">
     {children}
   </span>
 );

@@ -37,20 +37,20 @@ const JourneySection = () => {
       ref={containerRef}
       className="relative h-[300vh]"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-brand-bg-dark">
-        {/* ── Decorative vertical gold lines ── */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-brand-primary">
+        {/* ── Decorative vertical lines ── */}
         <div
           aria-hidden="true"
           className="absolute pointer-events-none left-[15%] top-[15%] w-px h-[40%]"
           style={{
-            background: 'linear-gradient(to bottom, transparent, rgba(212,175,55,0.3), transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(249, 246, 240, 0.05), transparent)',
           }}
         />
         <div
           aria-hidden="true"
           className="absolute pointer-events-none right-[15%] top-[15%] w-px h-[40%]"
           style={{
-            background: 'linear-gradient(to bottom, transparent, rgba(212,175,55,0.3), transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(249, 246, 240, 0.05), transparent)',
           }}
         />
 
@@ -65,7 +65,7 @@ const JourneySection = () => {
             className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           >
             <span
-              className="font-serif font-light text-[clamp(12rem,28vw,26rem)] text-brand-gold/[0.07] leading-none tracking-tight"
+              className="font-serif font-light text-[clamp(12rem,28vw,26rem)] text-brand-surface/[0.03] leading-none tracking-tight"
               aria-hidden="true"
             >
               {JOURNEY_STEPS[activeStep].num}
@@ -75,10 +75,10 @@ const JourneySection = () => {
 
         {/* ── Header ── */}
         <div className="absolute left-0 right-0 z-10 text-center top-[clamp(3rem,6vh,5rem)]">
-          <span className="font-sans text-[0.7rem] font-bold tracking-[0.2em] uppercase text-brand-gold block mb-5">
+          <span className="font-sans text-[0.7rem] font-bold tracking-[0.2em] uppercase text-brand-accent block mb-5">
             THE JOURNEY
           </span>
-          <h2 className="font-serif font-light leading-[1.08] text-white text-[clamp(2rem,4vw,3rem)] m-0">
+          <h2 className="font-serif font-light leading-[1.08] text-brand-text-light text-[clamp(2rem,4vw,3rem)] m-0">
             Your Path to Radiance
           </h2>
         </div>
@@ -94,17 +94,17 @@ const JourneySection = () => {
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
               className="max-w-[600px] w-full"
             >
-              <div className="w-[50px] h-px bg-brand-gold mb-6" />
+              <div className="w-[50px] h-px bg-brand-accent mb-6" />
 
-              <span className="font-sans text-[0.72rem] font-medium text-brand-gold tracking-[0.18em] uppercase block mb-5">
+              <span className="font-sans text-[0.72rem] font-medium text-brand-accent tracking-[0.18em] uppercase block mb-5">
                 Step {JOURNEY_STEPS[activeStep].num}
               </span>
 
-              <h3 className="font-serif font-normal text-[clamp(1.8rem,3vw,2.8rem)] text-white leading-[1.1] m-0 mb-6">
+              <h3 className="font-serif font-normal text-[clamp(1.8rem,3vw,2.8rem)] text-brand-text-light leading-[1.1] m-0 mb-6">
                 {JOURNEY_STEPS[activeStep].title}
               </h3>
 
-              <p className="font-sans font-light text-white/60 text-base leading-[1.75] max-w-[480px] m-0">
+              <p className="font-sans font-light text-brand-text-light/70 text-base leading-[1.75] max-w-[480px] m-0">
                 {JOURNEY_STEPS[activeStep].desc}
               </p>
             </motion.div>
@@ -120,7 +120,7 @@ const JourneySection = () => {
                 layout
                 animate={{
                   width: activeStep === i ? 32 : 16,
-                  background: activeStep === i ? '#D4AF37' : 'rgba(255,255,255,0.2)',
+                  background: activeStep === i ? '#5A6359' : 'rgba(249,246,240,0.1)',
                 }}
                 transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                 className="h-[2px] rounded-[2px]"
@@ -135,17 +135,17 @@ const JourneySection = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="font-sans text-[0.68rem] font-light text-white/35 tracking-[0.12em] uppercase"
+                className="font-sans text-[0.68rem] font-light text-brand-text-light/40 tracking-[0.12em] uppercase"
               >
                 Scroll to explore
               </motion.span>
             )}
           </AnimatePresence>
 
-          <div className="overflow-hidden w-[120px] h-px bg-white/10 rounded-[1px]">
+          <div className="overflow-hidden w-[120px] h-px bg-brand-text-light/10 rounded-[1px]">
             <motion.div
               style={{ width: progressWidth }}
-              className="h-full bg-brand-gold rounded-[1px]"
+              className="h-full bg-brand-accent rounded-[1px]"
             />
           </div>
         </div>

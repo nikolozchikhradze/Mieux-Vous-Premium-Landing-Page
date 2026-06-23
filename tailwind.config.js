@@ -8,11 +8,16 @@ export default {
     extend: {
       colors: {
         brand: {
-          'bg-light': '#FAF8F5',
-          'bg-dark': '#191B1F',
-          'gold': '#D4AF37',
-          'text-main': '#2C2E33',
-          'text-muted': '#8E9094',
+          bg: '#F9F6F0',
+          surface: '#FFFFFF',
+          primary: '#1A1615',
+          secondary: '#2C2523',
+          accent: '#5A6359',
+          text: {
+            main: '#1A1615',
+            muted: '#6B625F',
+            light: '#F9F6F0'
+          }
         }
       },
       fontFamily: {

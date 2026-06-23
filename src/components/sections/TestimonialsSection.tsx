@@ -5,7 +5,7 @@ import { TESTIMONIALS } from '../../data/constants';
 
 const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="py-28 lg:py-40 bg-brand-bg-light">
+    <section id="testimonials" className="py-28 lg:py-40 bg-brand-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="mb-20 text-center">
           <FadeIn>
@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
               <div className="flex flex-col py-12 border-b border-black/5">
                 {/* Decorative quote mark */}
                 <span
-                  className="font-serif font-light text-[5rem] text-brand-gold/60 leading-[0.8] block mb-4 select-none"
+                  className="font-serif font-light text-[5rem] text-brand-accent/60 leading-[0.8] block mb-4 select-none"
                   aria-hidden="true"
                 >
                   "
@@ -31,7 +31,7 @@ const TestimonialsSection = () => {
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-5">
                   {[1, 2, 3, 4, 5].map(star => (
-                    <span key={star} className="text-brand-gold text-sm">★</span>
+                    <span key={star} className="text-brand-accent text-sm">★</span>
                   ))}
                 </div>
 
@@ -39,12 +39,12 @@ const TestimonialsSection = () => {
                   {item.text}
                 </p>
 
-                {/* Gold line */}
-                <div className="w-8 h-px bg-brand-gold mb-5" />
+                {/* Accent line */}
+                <div className="w-8 h-px bg-brand-accent mb-5" />
 
                 {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-brand-text-main text-brand-gold text-[0.7rem] font-sans font-semibold tracking-[0.05em]">
+                  <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-brand-text-main text-brand-accent text-[0.7rem] font-sans font-semibold tracking-[0.05em]">
                     {item.initials}
                   </div>
                   <div>

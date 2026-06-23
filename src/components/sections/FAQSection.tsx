@@ -9,7 +9,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-28 lg:py-40 bg-brand-bg-light">
+    <section id="faq" className="py-28 lg:py-40 bg-brand-bg">
       <div className="max-w-[760px] mx-auto px-6">
         <div className="mb-20 text-center">
           <FadeIn>
@@ -29,10 +29,10 @@ const FAQSection = () => {
                   className="w-full py-7 flex items-center justify-between text-left group"
                   aria-expanded={openIndex === idx}
                 >
-                  <span className="font-sans font-medium text-base text-brand-text-main leading-[1.4] group-hover:text-brand-gold transition-colors duration-300">
+                  <span className="font-sans font-medium text-base text-brand-text-main leading-[1.4] group-hover:text-brand-accent transition-colors duration-300">
                     {faq.question}
                   </span>
-                  <div className="ml-4 shrink-0 text-brand-gold">
+                  <div className="ml-4 shrink-0 text-brand-accent">
                     {openIndex === idx ? <Minus size={18} /> : <Plus size={18} />}
                   </div>
                 </button>

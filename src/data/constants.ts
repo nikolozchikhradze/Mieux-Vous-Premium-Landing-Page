@@ -2,27 +2,29 @@ import { ServiceCard, Testimonial, FAQItem } from '../types';
 
 export const EASE_LUXURY: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
+export const HERO_IMAGE = "https://images.unsplash.com/photo-1615296015509-56b0201d4a86?w=2400&q=100&auto=format&fit=crop";
+
 export const SERVICES: ServiceCard[] = [
   {
     id: 'injection',
     title: 'Injection Cosmetology',
     titleGe: 'საინექციო კოსმეტოლოგია',
     description: "Botox, fillers, bioremodeling, and mesotherapy delivered with medical precision and an artist's eye.",
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=85'
+    image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=1200&q=90&auto=format&fit=crop'
   },
   {
     id: 'hardware',
     title: 'Hardware Aesthetics',
     titleGe: 'აპარატურული ესთეტიკა',
     description: 'RF lifting, laser rejuvenation, and ultrasound therapy for non-invasive transformation.',
-    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=85'
+    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=90&auto=format&fit=crop'
   },
   {
     id: 'skincare',
     title: 'Premium Skin Care',
     titleGe: 'ესთეტიკური მოვლა',
     description: 'Bespoke facial protocols, deep hydration, and skin barrier restoration for a luminous complexion.',
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=85'
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&q=90&auto=format&fit=crop'
   }
 ];
 
