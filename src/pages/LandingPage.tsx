@@ -11,7 +11,7 @@ import ContactCTASection from '../components/sections/ContactCTASection';
 
 const LandingPage = () => {
   return (
-    <div className="bg-[#FAF9F6]">
+    <div className="bg-brand-bg-light text-brand-text-main font-sans">
       <Navbar />
       <HeroSection />
       <ServicesSection />

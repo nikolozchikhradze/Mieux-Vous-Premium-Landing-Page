@@ -9,20 +9,12 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-28 lg:py-40" style={{ background: '#FAF9F6' }}>
+    <section id="faq" className="py-28 lg:py-40 bg-brand-bg-light">
       <div className="max-w-[760px] mx-auto px-6">
         <div className="mb-20 text-center">
           <FadeIn>
             <Eyebrow>FREQUENTLY ASKED</Eyebrow>
-            <h2
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 300,
-                lineHeight: 1.08,
-                color: '#1A1814',
-                fontSize: 'clamp(2.5rem, 4vw, 3rem)'
-              }}
-            >
+            <h2 className="font-serif font-light tracking-tight text-brand-text-main text-[clamp(2.5rem,4vw,3rem)] leading-[1.08]">
               Your Questions, Answered
             </h2>
           </FadeIn>
@@ -31,25 +23,16 @@ const FAQSection = () => {
         <div>
           {FAQS.map((faq, idx) => (
             <FadeIn key={faq.id} delay={idx * 0.05}>
-              <div style={{ borderBottom: '1px solid #EAE6DF' }}>
+              <div className="border-b border-black/5">
                 <button
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                   className="w-full py-7 flex items-center justify-between text-left group"
                   aria-expanded={openIndex === idx}
                 >
-                  <span
-                    style={{
-                      fontFamily: "'Onest', sans-serif",
-                      fontWeight: 500,
-                      fontSize: '1rem',
-                      color: '#1A1814',
-                      lineHeight: 1.4
-                    }}
-                    className="group-hover:text-[#D4AF37] transition-colors duration-300"
-                  >
+                  <span className="font-sans font-medium text-base text-brand-text-main leading-[1.4] group-hover:text-brand-gold transition-colors duration-300">
                     {faq.question}
                   </span>
-                  <div className="ml-4 shrink-0 text-[#D4AF37]">
+                  <div className="ml-4 shrink-0 text-brand-gold">
                     {openIndex === idx ? <Minus size={18} /> : <Plus size={18} />}
                   </div>
                 </button>
@@ -62,16 +45,7 @@ const FAQSection = () => {
                       transition={{ duration: 0.4, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p
-                        style={{
-                          fontFamily: "'Onest', sans-serif",
-                          fontWeight: 300,
-                          color: '#7A7065',
-                          lineHeight: 1.75,
-                          fontSize: '0.95rem',
-                          paddingBottom: '1.75rem'
-                        }}
-                      >
+                      <p className="font-sans font-light text-brand-text-muted leading-[1.75] text-[0.95rem] pb-7">
                         {faq.answer}
                       </p>
                     </motion.div>
