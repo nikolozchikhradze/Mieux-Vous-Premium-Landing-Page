@@ -6,12 +6,12 @@ import { SERVICES } from '../../data/constants';
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-28 lg:py-40 bg-brand-bg">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="mb-20">
+    <section id="services" className="py-16 md:py-24 lg:py-32 bg-brand-bg">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32">
+        <div className="mb-16 md:mb-20">
           <FadeIn>
             <Eyebrow>OUR EXPERTISE</Eyebrow>
-            <h2 className="font-serif font-light tracking-tight text-brand-text-main leading-[1.08] text-[clamp(2.5rem,4vw,3.5rem)] max-w-3xl">
+            <h2 className="font-serif font-light tracking-tight text-brand-text-main leading-[1.08] text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] max-w-4xl">
               Curated Treatments for Lasting Elegance
             </h2>
           </FadeIn>

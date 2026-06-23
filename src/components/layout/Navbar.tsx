@@ -6,8 +6,9 @@ import { NAV_LINKS } from '../../data/constants';
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-brand-bg/92 backdrop-blur-md border-b border-brand-accent/20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+    <>
+      <nav className="sticky top-0 z-50 w-full border-b border-brand-primary/5 bg-brand-bg/70 backdrop-blur-md transition-all duration-300">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-1.5 cursor-pointer group">
           <span className="font-serif font-normal tracking-wide text-2xl text-brand-text-main">
@@ -43,6 +44,8 @@ const Navbar = () => {
         </button>
       </div>
 
+      </nav>
+
       {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
@@ -51,32 +54,32 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className="fixed inset-0 z-[60] flex flex-col p-8 bg-brand-bg"
+            className="fixed inset-0 z-[100] h-screen w-screen bg-[#F9F6F0] flex flex-col p-6 animate-fade-in"
           >
-            <div className="flex justify-end">
-              <button onClick={() => setIsOpen(false)} className="text-brand-text-main p-2">
+            <div className="flex items-center justify-end w-full py-4">
+              <button onClick={() => setIsOpen(false)} className="text-[#1A1615] p-2">
                 <X size={32} />
               </button>
             </div>
-            <div className="flex-1 flex flex-col items-center justify-center gap-8">
+            <div className="flex flex-col items-center justify-center flex-grow space-y-8 font-serif text-2xl tracking-wide text-[#1A1615]">
               {NAV_LINKS.map(link => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="font-serif font-light text-3xl text-brand-text-main hover:text-brand-accent transition-colors"
+                  className="hover:text-[#5A6359] transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <button className="mt-8 px-10 py-4 font-sans font-bold uppercase text-[0.7rem] tracking-[0.15em] rounded-sm bg-brand-text-main text-brand-surface">
+              <button className="mt-8 px-10 py-4 font-sans font-bold uppercase text-[0.7rem] tracking-[0.15em] rounded-sm bg-[#1A1615] text-[#FFFFFF]">
                 Book Consultation
               </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
