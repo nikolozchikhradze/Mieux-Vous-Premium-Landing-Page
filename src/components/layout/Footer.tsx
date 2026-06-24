@@ -9,7 +9,7 @@ import { TranslationKey } from '../../data/translations';
 const Footer = () => {
   const { t } = useLanguage();
   const [isBookingOpen, setIsBookingOpen] = React.useState(false);
-  const [selectedService, setSelectedService] = React.useState('Book a Service');
+  const [selectedServiceKey, setSelectedServiceKey] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -23,6 +23,11 @@ const Footer = () => {
   }, []);
 
   const footerLinks = ['Services', 'Process', 'FAQ', 'Contact'];
+  const serviceKeys = ['injection', 'hardware', 'premiumCare', 'consultation'];
+
+  const buttonText = selectedServiceKey 
+    ? t(`footer_${selectedServiceKey}` as TranslationKey) 
+    : t('footer_bookService');
 
   return (
     <footer className="pt-24 pb-12 text-sm bg-brand-primary text-white/45">
@@ -90,7 +95,9 @@ const Footer = () => {
                 onClick={() => setIsBookingOpen(!isBookingOpen)}
                 className="w-full px-5 py-4 flex items-center justify-between border border-brand-accent/20 hover:border-brand-accent transition-all font-sans font-light"
               >
-                <span className={selectedService !== 'Book a Service' ? 'text-white truncate' : 'truncate'}>{selectedService}</span>
+                <span className={selectedServiceKey !== null ? 'text-white truncate' : 'truncate'}>
+                  {buttonText}
+                </span>
                 <ChevronDown
                   className={cn('transition-transform duration-300 text-brand-accent flex-shrink-0 ml-2', isBookingOpen && 'rotate-180')}
                   size={16}
@@ -105,16 +112,16 @@ const Footer = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute bottom-full mb-2 left-0 w-full z-20 bg-brand-primary border border-brand-accent/20"
                   >
-                    {BOOKING_OPTIONS.map(opt => (
+                    {serviceKeys.map(key => (
                       <button
-                        key={opt}
+                        key={key}
                         onClick={() => {
-                          setSelectedService(opt);
+                          setSelectedServiceKey(key);
                           setIsBookingOpen(false);
                         }}
                         className="w-full px-5 py-4 text-left hover:text-brand-accent transition-colors font-sans font-light text-white/60 truncate"
                       >
-                        {opt}
+                        {t(`footer_${key}` as TranslationKey)}
                       </button>
                     ))}
                   </motion.div>

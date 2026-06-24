@@ -63,6 +63,13 @@ export const translations = {
     'footer.rights': '© 2024 Mieux Vous. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
+
+    // Footer Services
+    'footer_injection': 'Injection Cosmetology',
+    'footer_hardware': 'Hardware Aesthetics',
+    'footer_premiumCare': 'Premium Skin Care',
+    'footer_consultation': 'General Consultation',
+    'footer_bookService': 'Book a Service',
   },
   ka: {
     // Nav
@@ -128,6 +135,13 @@ export const translations = {
     'footer.rights': '© 2024 Mieux Vous. ყველა უფლება დაცულია.',
     'footer.privacy': 'კონფიდენციალურობის პოლიტიკა',
     'footer.terms': 'მოხმარების წესები',
+
+    // Footer Services
+    'footer_injection': 'საინექციო კოსმეტოლოგია',
+    'footer_hardware': 'აპარატურული ესთეტიკა',
+    'footer_premiumCare': 'კანის პრემიუმ მოვლა',
+    'footer_consultation': 'ზოგადი კონსულტაცია',
+    'footer_bookService': 'დაჯავშნე ვიზიტი',
   }
 } as const;
 

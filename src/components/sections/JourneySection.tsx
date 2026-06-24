@@ -39,9 +39,9 @@ const JourneySection = () => {
     <section
       id="process"
       ref={containerRef}
-      className="relative h-[300vh]"
+      className="relative h-[450vh] bg-brand-primary"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-brand-primary">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         {/* ── Decorative vertical lines ── */}
         <div
           aria-hidden="true"
@@ -88,15 +88,15 @@ const JourneySection = () => {
         </div>
 
         {/* ── Step Content (AnimatePresence crossfade) ── */}
-        <div className="relative z-10 w-full flex items-center justify-center px-6 mt-[4vh]">
-          <AnimatePresence mode="wait">
+        <div className="absolute inset-0 z-10 w-full flex items-center justify-center px-6 mt-[4vh] pointer-events-none">
+          <AnimatePresence>
             <motion.div
               key={activeStep}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-              className="max-w-[600px] w-full text-center md:text-left"
+              className="absolute max-w-[600px] w-full text-center md:text-left pointer-events-auto"
             >
               <div className="w-[50px] h-px bg-brand-accent mb-6 mx-auto md:mx-0" />
 

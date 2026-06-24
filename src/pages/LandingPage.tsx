@@ -13,7 +13,7 @@ const LandingPage = () => {
   return (
     <div className="bg-brand-bg text-brand-text-main font-sans">
       <Navbar />
-      <main className="relative w-full overflow-x-hidden">
+      <main className="relative w-full">
         <HeroSection />
         <ServicesSection />
         <PhilosophySection />

@@ -13,6 +13,9 @@
   100% { transform: scale(1.1); }
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  overflow-x: clip; /* CRITICAL FIX: Use clip, not hidden */
+  width: 100%;
+  position: relative;
 }
