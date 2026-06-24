@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import { HERO_IMAGE } from '../../data/constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full h-screen lg:h-[calc(100vh-80px)] min-h-[600px] flex items-center justify-center overflow-hidden py-6 lg:py-0 bg-brand-bg">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 w-full h-full flex items-center">
@@ -15,22 +18,22 @@ const HeroSection = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-start text-left lg:pr-10"
           >
-            <span className="font-sans font-bold uppercase tracking-[0.2em] text-[0.65rem] sm:text-[0.7rem] text-brand-accent block mb-6 sm:mb-8">
-              Parisian Elegance · Georgian Warmth
+            <span className="font-sans break-words font-bold uppercase tracking-[0.2em] text-[0.65rem] sm:text-[0.7rem] text-brand-accent block mb-6 sm:mb-8">
+              {t('hero.eyebrow')}
             </span>
-            <h1 className="font-serif font-light tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.95] text-brand-text-main mb-6 md:mb-8">
-              The Art of<br />
-              <span className="italic text-brand-secondary">Subtle</span> Refinement
+            <h1 className="font-serif break-words font-light tracking-tight text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.95] text-brand-text-main mb-6 md:mb-8">
+              {t('hero.title.1')}<br />
+              <span className="italic text-brand-secondary">{t('hero.title.2').split(' ')[0]}</span> {t('hero.title.2').split(' ').slice(1).join(' ')}
             </h1>
-            <p className="font-sans font-light text-brand-text-muted text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mb-10 md:mb-12">
-              Experience the pinnacle of aesthetic medicine, where advanced European techniques meet a deep respect for your natural beauty.
+            <p className="font-sans break-words hyphens-auto font-light text-brand-text-muted text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mb-10 md:mb-12">
+              {t('hero.desc')}
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
-              <button className="w-full sm:w-auto font-sans text-[0.75rem] tracking-[0.15em] rounded-sm bg-brand-primary text-brand-text-light px-10 py-4 font-bold uppercase hover:bg-brand-secondary transition-colors duration-300">
-                Discover Treatments
+              <button className="w-full sm:w-auto whitespace-nowrap font-sans text-[0.75rem] tracking-[0.15em] rounded-sm bg-brand-primary text-brand-text-light px-10 py-4 font-bold uppercase hover:bg-brand-secondary transition-colors duration-300">
+                {t('hero.cta')}
               </button>
-              <button className="w-full sm:w-auto font-sans text-[0.75rem] tracking-[0.15em] rounded-sm px-10 py-4 font-bold uppercase border-b border-brand-primary text-brand-primary hover:text-brand-accent hover:border-brand-accent transition-colors duration-300">
-                Our Philosophy
+              <button className="w-full sm:w-auto whitespace-nowrap font-sans text-[0.75rem] tracking-[0.15em] rounded-sm px-10 py-4 font-bold uppercase border-b border-brand-primary text-brand-primary hover:text-brand-accent hover:border-brand-accent transition-colors duration-300">
+                {t('philosophy.title')}
               </button>
             </div>
           </motion.div>

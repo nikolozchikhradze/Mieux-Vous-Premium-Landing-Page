@@ -3,6 +3,7 @@ import { FadeIn } from '../ui/FadeIn';
 import { Eyebrow } from '../ui/Eyebrow';
 import { TESTIMONIALS } from '../../data/constants';
 import { cn } from '../../lib/utils';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const IMG_1 = "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&q=80";
 const IMG_2 = "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80";
@@ -23,19 +24,25 @@ const layoutCells: GridCell[] = [
 ];
 
 const TestimonialsSection = () => {
+  const { language, t } = useLanguage();
+  const isKa = language === 'ka';
+
   return (
     <section id="testimonials" className="py-16 md:py-24 lg:py-32 bg-brand-bg">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32">
         <div className="mb-16 md:mb-20 text-center">
           <FadeIn>
-            <Eyebrow>CLIENT STORIES</Eyebrow>
-            <h2 className="font-serif font-light tracking-tight text-brand-text-main text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.08]">
-              What Our Clients Say
+            <Eyebrow>{t('testimonials.eyebrow')}</Eyebrow>
+            <h2 className="font-serif break-words font-light tracking-tight text-brand-text-main text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.08]">
+              {t('testimonials.title')}
             </h2>
+            <p className="mt-6 mx-auto font-sans break-words hyphens-auto font-light text-brand-text-muted text-base sm:text-lg max-w-2xl">
+              {t('testimonials.desc')}
+            </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-full">
           {layoutCells.map((cell, idx) => (
             <FadeIn key={idx} delay={idx * 0.1} className={cell.className}>
               {cell.type === 'image' ? (
@@ -63,8 +70,8 @@ const TestimonialsSection = () => {
                         <span key={star} className="text-brand-accent text-sm">★</span>
                       ))}
                     </div>
-                    <p className="font-serif font-normal text-[1.2rem] text-brand-text-main leading-[1.7] mb-6">
-                      {cell.data.text}
+                    <p className="font-serif break-words font-normal text-[1.1rem] md:text-[1.2rem] text-brand-text-main leading-[1.7] mb-6">
+                      {isKa ? cell.data.textGe : cell.data.text}
                     </p>
                   </div>
 
@@ -77,7 +84,7 @@ const TestimonialsSection = () => {
                         {cell.data.author}
                       </p>
                       <span className="font-sans font-light text-[0.75rem] text-brand-text-muted uppercase tracking-[0.1em] block mt-0.5">
-                        {cell.data.treatment}
+                        {isKa ? cell.data.treatmentGe : cell.data.treatment}
                       </span>
                     </div>
                   </div>

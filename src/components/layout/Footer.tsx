@@ -3,8 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Facebook, Instagram, ChevronDown } from 'lucide-react';
 import { BOOKING_OPTIONS } from '../../data/constants';
 import { cn } from '../../lib/utils';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { TranslationKey } from '../../data/translations';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const [isBookingOpen, setIsBookingOpen] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState('Book a Service');
   const dropdownRef = React.useRef<HTMLDivElement>(null);
@@ -28,14 +31,13 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-8">
             <div className="flex items-center gap-1.5">
-              <span className="font-serif font-normal text-2xl text-white tracking-wide">
+              <span className="font-serif font-normal text-2xl text-white tracking-wide break-words">
                 Mieux Vous
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent translate-y-0.5" />
             </div>
-            <p className="font-sans font-light leading-relaxed">
-              Refined Aesthetics. Real Results.<br />
-              Tbilisi's premier luxury medical cosmetic clinic.
+            <p className="font-sans break-words hyphens-auto font-light leading-relaxed">
+              {t('footer.description')}
             </p>
             <div className="flex gap-3">
               {[Instagram, Facebook].map((Icon, idx) => (
@@ -52,14 +54,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="font-sans font-semibold text-white text-[0.9rem]">
-              Quick Links
+            <h4 className="font-sans font-semibold text-white text-[0.9rem] break-words">
+              {t('footer.quickLinks')}
             </h4>
             <ul className="space-y-4 font-sans font-light">
               {footerLinks.map(link => (
                 <li key={link}>
-                  <a href={`#${link.toLowerCase()}`} className="hover:text-brand-accent transition-colors">
-                    {link}
+                  <a href={`#${link.toLowerCase()}`} className="hover:text-brand-accent transition-colors break-words">
+                    {t(`nav.${link.toLowerCase()}` as TranslationKey)}
                   </a>
                 </li>
               ))}
@@ -68,29 +70,29 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-6">
-            <h4 className="font-sans font-semibold text-white text-[0.9rem]">
-              Get in Touch
+            <h4 className="font-sans font-semibold text-white text-[0.9rem] break-words">
+              {t('footer.contactUs')}
             </h4>
             <ul className="space-y-4 font-sans font-light">
-              <li>Pekini 22, Tbilisi, Georgia</li>
-              <li>info@mieuxvous.ge</li>
-              <li>+995 555 000 000</li>
+              <li className="break-words hyphens-auto">{t('footer.address')}</li>
+              <li className="break-words">{t('footer.email')}</li>
+              <li className="break-words whitespace-nowrap">{t('footer.phone')}</li>
             </ul>
           </div>
 
           {/* Booking Dropdown */}
           <div className="space-y-6">
-            <h4 className="font-sans font-semibold text-white text-[0.9rem]">
-              Booking
+            <h4 className="font-sans font-semibold text-white text-[0.9rem] break-words">
+              {t('nav.book')}
             </h4>
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsBookingOpen(!isBookingOpen)}
                 className="w-full px-5 py-4 flex items-center justify-between border border-brand-accent/20 hover:border-brand-accent transition-all font-sans font-light"
               >
-                <span className={selectedService !== 'Book a Service' ? 'text-white' : ''}>{selectedService}</span>
+                <span className={selectedService !== 'Book a Service' ? 'text-white truncate' : 'truncate'}>{selectedService}</span>
                 <ChevronDown
-                  className={cn('transition-transform duration-300 text-brand-accent', isBookingOpen && 'rotate-180')}
+                  className={cn('transition-transform duration-300 text-brand-accent flex-shrink-0 ml-2', isBookingOpen && 'rotate-180')}
                   size={16}
                 />
               </button>
@@ -110,7 +112,7 @@ const Footer = () => {
                           setSelectedService(opt);
                           setIsBookingOpen(false);
                         }}
-                        className="w-full px-5 py-4 text-left hover:text-brand-accent transition-colors font-sans font-light text-white/60"
+                        className="w-full px-5 py-4 text-left hover:text-brand-accent transition-colors font-sans font-light text-white/60 truncate"
                       >
                         {opt}
                       </button>
@@ -124,15 +126,16 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/5">
-          <p className="font-sans font-light text-[0.8rem]">
-            © 2024 Mieux Vous. All rights reserved.
+          <p className="font-sans break-words font-light text-[0.8rem]">
+            {t('footer.rights')}
           </p>
           <div className="flex gap-8 font-sans font-light text-[0.8rem]">
-            {['Privacy Policy', 'Terms of Service'].map(link => (
-              <a key={link} href="#" className="hover:text-brand-accent transition-colors">
-                {link}
-              </a>
-            ))}
+            <a href="#" className="hover:text-brand-accent transition-colors break-words">
+              {t('footer.privacy')}
+            </a>
+            <a href="#" className="hover:text-brand-accent transition-colors break-words">
+              {t('footer.terms')}
+            </a>
           </div>
         </div>
       </div>

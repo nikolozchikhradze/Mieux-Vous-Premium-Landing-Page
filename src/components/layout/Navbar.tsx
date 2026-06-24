@@ -2,9 +2,17 @@ import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../../data/constants';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { TranslationKey } from '../../data/translations';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ka' : 'en');
+  };
+
   return (
     <>
       <nav className="sticky top-0 z-50 w-full border-b border-brand-primary/5 bg-brand-bg/70 backdrop-blur-md transition-all duration-300">
@@ -18,30 +26,44 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-8 xl:gap-10">
           {NAV_LINKS.map(link => (
             <a
               key={link.label}
               href={link.href}
               className="font-sans font-medium text-[0.85rem] text-brand-text-main hover:text-brand-accent transition-colors duration-300 relative group"
             >
-              {link.label}
+              {t(`nav.${link.label.toLowerCase()}` as TranslationKey)}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-accent group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:block">
-          <button className="font-sans text-[0.7rem] tracking-[0.15em] rounded-sm px-6 py-2.5 border border-brand-text-main text-brand-text-main font-semibold uppercase hover:bg-brand-accent hover:text-brand-surface hover:border-brand-accent transition-all duration-300">
-            Book Consultation
+        {/* Desktop Actions */}
+        <div className="hidden lg:flex items-center gap-6">
+          <button 
+            onClick={toggleLanguage}
+            className="font-sans text-[0.75rem] font-medium tracking-widest text-brand-text-muted hover:text-brand-text-main transition-colors duration-300"
+          >
+            {language === 'en' ? 'EN / GE' : 'GE / EN'}
+          </button>
+          <button className="font-sans text-[0.7rem] whitespace-nowrap tracking-[0.15em] rounded-sm px-6 py-2.5 border border-brand-text-main text-brand-text-main font-semibold uppercase hover:bg-brand-accent hover:text-brand-surface hover:border-brand-accent transition-all duration-300">
+            {t('nav.book')}
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="lg:hidden text-brand-text-main" onClick={() => setIsOpen(true)}>
-          <Menu size={24} />
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-4 lg:hidden">
+          <button 
+            onClick={toggleLanguage}
+            className="font-sans text-[0.7rem] font-medium tracking-widest text-brand-text-muted hover:text-brand-text-main transition-colors duration-300"
+          >
+            {language === 'en' ? 'EN / GE' : 'GE / EN'}
+          </button>
+          <button className="text-brand-text-main" onClick={() => setIsOpen(true)}>
+            <Menu size={24} />
+          </button>
+        </div>
       </div>
 
       </nav>
@@ -54,7 +76,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className="fixed inset-0 z-[100] h-screen w-screen bg-[#F9F6F0] flex flex-col p-6 animate-fade-in"
+            className="fixed inset-0 z-[100] h-screen w-full bg-[#F9F6F0] flex flex-col p-6 animate-fade-in overflow-y-auto overflow-x-hidden"
           >
             <div className="flex items-center justify-end w-full py-4">
               <button onClick={() => setIsOpen(false)} className="text-[#1A1615] p-2">
@@ -67,13 +89,13 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-[#5A6359] transition-colors"
+                  className="hover:text-[#5A6359] transition-colors break-words text-center"
                 >
-                  {link.label}
+                  {t(`nav.${link.label.toLowerCase()}` as TranslationKey)}
                 </a>
               ))}
-              <button className="mt-8 px-10 py-4 font-sans font-bold uppercase text-[0.7rem] tracking-[0.15em] rounded-sm bg-[#1A1615] text-[#FFFFFF]">
-                Book Consultation
+              <button className="mt-8 px-10 py-4 font-sans whitespace-nowrap break-words font-bold uppercase text-[0.7rem] md:text-[0.8rem] tracking-[0.15em] rounded-sm bg-[#1A1615] text-[#FFFFFF]">
+                {t('nav.book')}
               </button>
             </div>
           </motion.div>

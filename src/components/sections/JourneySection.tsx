@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { JOURNEY_STEPS } from '../../data/constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const JourneySection = () => {
+  const { language, t } = useLanguage();
+  const isKa = language === 'ka';
+
   // ── Ref for the scroll-track parent ──
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -76,10 +80,10 @@ const JourneySection = () => {
         {/* ── Header ── */}
         <div className="absolute left-0 right-0 z-10 text-center top-[clamp(3rem,6vh,5rem)]">
           <span className="font-sans text-[0.7rem] font-bold tracking-[0.2em] uppercase text-brand-accent block mb-5">
-            THE JOURNEY
+            {t('journey.eyebrow')}
           </span>
-          <h2 className="font-serif font-light leading-[1.08] text-brand-text-light text-[clamp(2rem,4vw,3rem)] m-0">
-            Your Path to Radiance
+          <h2 className="font-serif break-words font-light leading-[1.08] text-brand-text-light text-[clamp(2rem,4vw,3rem)] m-0">
+            {t('journey.title')}
           </h2>
         </div>
 
@@ -92,20 +96,20 @@ const JourneySection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-              className="max-w-[600px] w-full"
+              className="max-w-[600px] w-full text-center md:text-left"
             >
-              <div className="w-[50px] h-px bg-brand-accent mb-6" />
+              <div className="w-[50px] h-px bg-brand-accent mb-6 mx-auto md:mx-0" />
 
               <span className="font-sans text-[0.72rem] font-medium text-brand-accent tracking-[0.18em] uppercase block mb-5">
                 Step {JOURNEY_STEPS[activeStep].num}
               </span>
 
-              <h3 className="font-serif font-normal text-[clamp(1.8rem,3vw,2.8rem)] text-brand-text-light leading-[1.1] m-0 mb-6">
-                {JOURNEY_STEPS[activeStep].title}
+              <h3 className="font-serif break-words font-normal text-[clamp(1.5rem,3vw,2.8rem)] text-brand-text-light leading-[1.1] m-0 mb-6">
+                {isKa ? JOURNEY_STEPS[activeStep].titleGe : JOURNEY_STEPS[activeStep].title}
               </h3>
 
-              <p className="font-sans font-light text-brand-text-light/70 text-base leading-[1.75] max-w-[480px] m-0">
-                {JOURNEY_STEPS[activeStep].desc}
+              <p className="font-sans break-words hyphens-auto font-light text-brand-text-light/70 text-base leading-[1.75] max-w-[480px] m-0 mx-auto md:mx-0">
+                {isKa ? JOURNEY_STEPS[activeStep].descGe : JOURNEY_STEPS[activeStep].desc}
               </p>
             </motion.div>
           </AnimatePresence>

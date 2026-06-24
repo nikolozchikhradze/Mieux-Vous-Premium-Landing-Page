@@ -2,8 +2,10 @@ import * as React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Eyebrow } from '../ui/Eyebrow';
 import { EASE_LUXURY } from '../../data/constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const PhilosophySection = () => {
+  const { t } = useLanguage();
   const leftRef = React.useRef(null);
   const rightRef = React.useRef(null);
   const isLeftInView = useInView(leftRef, { once: true, margin: '-100px' });
@@ -43,18 +45,23 @@ const PhilosophySection = () => {
             transition={{ duration: 0.9, ease: EASE_LUXURY, delay: 0.15 }}
             className="w-full lg:w-1/2"
           >
-            <Eyebrow>NOTRE PHILOSOPHIE</Eyebrow>
-            <h2 className="font-serif font-light tracking-tight text-brand-text-main text-[clamp(2.2rem,4vw,3.5rem)] leading-[1.08] mb-6">
-              Beauty rooted in harmony, not alteration.
+            <Eyebrow>{t('philosophy.eyebrow')}</Eyebrow>
+            <h2 className="font-serif break-words font-light tracking-tight text-brand-text-main text-[clamp(2.2rem,4vw,3.5rem)] leading-[1.08] mb-6">
+              {t('philosophy.title')}
             </h2>
             <div className="w-8 h-px bg-brand-accent mb-8" />
-            <p className="font-sans font-light text-brand-text-muted text-base leading-[1.8] mb-5">
-              We believe aesthetic medicine is a deeply personal art. Our approach begins with listening — understanding not just how you wish to look, but how you wish to feel. Every treatment is designed to enhance your natural architecture, never to impose an external ideal.
+            <p className="font-sans break-words hyphens-auto font-light text-brand-text-muted text-base leading-[1.8] mb-5">
+              {t('philosophy.p1')}
             </p>
-            <p className="font-sans font-light text-brand-text-muted text-base leading-[1.8] mb-10">
-              Our specialists combine European medical training with an artist's sensitivity. The result is care that is precise, thoughtful, and unmistakably human.
+            <p className="font-sans break-words hyphens-auto font-light text-brand-text-muted text-base leading-[1.8] mb-10">
+              {t('philosophy.p2')}
             </p>
-            <p className="font-sans font-normal text-[0.8rem] text-brand-text-main tracking-[0.12em] uppercase">
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
+              <button className="whitespace-nowrap font-sans text-[0.75rem] tracking-[0.15em] rounded-sm border border-brand-primary text-brand-primary px-8 py-3 font-bold uppercase hover:bg-brand-primary hover:text-brand-surface transition-colors duration-300">
+                {t('philosophy.cta')}
+              </button>
+            </div>
+            <p className="font-sans font-normal text-[0.7rem] text-brand-text-muted tracking-[0.12em] uppercase mt-8">
               Est. 2024 · Tbilisi, Georgia
             </p>
           </motion.div>

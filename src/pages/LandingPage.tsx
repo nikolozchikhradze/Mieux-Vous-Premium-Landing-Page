@@ -13,13 +13,15 @@ const LandingPage = () => {
   return (
     <div className="bg-brand-bg text-brand-text-main font-sans">
       <Navbar />
-      <HeroSection />
-      <ServicesSection />
-      <PhilosophySection />
-      <JourneySection />
-      <TestimonialsSection />
-      <FAQSection />
-      <ContactCTASection />
+      <main className="relative w-full overflow-x-hidden">
+        <HeroSection />
+        <ServicesSection />
+        <PhilosophySection />
+        <JourneySection />
+        <TestimonialsSection />
+        <FAQSection />
+        <ContactCTASection />
+      </main>
       <Footer />
     </div>
   );
